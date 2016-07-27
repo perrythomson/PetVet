@@ -14,7 +14,7 @@ public class DataCache {
     private DataCache() {
         // Exists only to defeat instantiation.
     }
-    public static synchronized DataCache getInstance() {
+    public static synchronized DataCache getInstance() { //constructor setting instance to itself...
         if(instance == null) {
             instance = new DataCache();
         }
