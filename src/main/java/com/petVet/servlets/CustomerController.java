@@ -1,5 +1,6 @@
 package com.petVet.servlets;
 
+import com.petVet.data.DataCache;
 import com.petVet.entities.Owner;
 
 import javax.servlet.RequestDispatcher;
@@ -16,15 +17,41 @@ public class CustomerController extends HttpServlet {
                        HttpServletResponse response)
             throws IOException, ServletException {
 
-        String uri = request.getRequestURI();
-        System.out.println("Requested URI: "+uri);
+    String uri = request.getRequestURI();
+    System.out.println("Requested URI: "+uri);
 
-        String jspName = uri.substring(uri.lastIndexOf('/')+1);
-        System.out.println("JSP Name: "+jspName);
+    String jspName = uri.substring(uri.lastIndexOf('/')+1);
+    System.out.println("JSP Name: "+jspName);
+
+    if(jspName.equalsIgnoreCase("viewAllPets")) {
+                                                                // TODO: do something here
+    } else if(jspName.equalsIgnoreCase("viewPet")) {
+                                                                // added in JSP from customers files
+    } else if(jspName.equalsIgnoreCase("addNewPet")) {
+
+    } else if(jspName.equalsIgnoreCase("editPet")) {
+
+    } else if(jspName.equalsIgnoreCase("viewAllOwners")) {
+        ArrayList<Owner> owners = DataCache.getOwners();
+        request.setAttribute("owners",owners);
 
 
-        RequestDispatcher view = request.getRequestDispatcher("/customers/"+jspName+".jsp");
-        view.forward(request, response);
+    } else if(jspName.equalsIgnoreCase("viewOwner")) {
+        String ownerId = request.getParameter("ownerid");
+        Owner owner = DataCache.getOwner(ownerId);
+        request.setAttribute("owner",owner);
+
+
+    } else if(jspName.equalsIgnoreCase("editOwner")) {
+
+    } else if(jspName.equalsIgnoreCase("addNewOwner")) {
+
+    }
+    // ... add the if-else logic for the owner views...
+
+    RequestDispatcher view = request.getRequestDispatcher("/customers/"+jspName+".jsp");
+    view.forward(request, response);
+
 
     }
 
@@ -33,4 +60,6 @@ public class CustomerController extends HttpServlet {
             throws IOException, ServletException {
         doPost(request,response);
     }
+
+
 }
