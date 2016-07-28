@@ -2,6 +2,7 @@ package com.petVet.servlets;
 
 import com.petVet.data.DataCache;
 import com.petVet.entities.Owner;
+import com.petVet.entities.Pet;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -24,18 +25,22 @@ public class CustomerController extends HttpServlet {
     System.out.println("JSP Name: "+jspName);
 
     if(jspName.equalsIgnoreCase("viewAllPets")) {
-                                                                // TODO: do something here
+                ArrayList<Pet> pets = DataCache.getPets();
+                request.setAttribute("pets",pets);
     } else if(jspName.equalsIgnoreCase("viewPet")) {
+        String petId = request.getParameter("petid");
+        Pet pet = DataCache.getPet(petId);
+        request.setAttribute("pet", pet);
+
                                                                 // added in JSP from customers files
     } else if(jspName.equalsIgnoreCase("addNewPet")) {
 
     } else if(jspName.equalsIgnoreCase("editPet")) {
 
+
     } else if(jspName.equalsIgnoreCase("viewAllOwners")) {
         ArrayList<Owner> owners = DataCache.getOwners();
         request.setAttribute("owners",owners);
-
-
     } else if(jspName.equalsIgnoreCase("viewOwner")) {
         String ownerId = request.getParameter("ownerid");
         Owner owner = DataCache.getOwner(ownerId);
