@@ -11,7 +11,7 @@
       <hr>
         <img src="http://www.petvetauburn.com/PetVet_AHC_Logo_M.gif"/>
       <hr/>
-
+<body>
   <ul>
       <li>
           <a class="active" href="/">HOME</a>

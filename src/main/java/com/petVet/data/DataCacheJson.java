@@ -46,6 +46,7 @@ public class DataCacheJson {
         return new ArrayList<>(petsHashMap.values());
     }
 
+
     public static Pet getPet(String petId) {
         checkLoaded();
         Pet pet = null;
@@ -54,17 +55,19 @@ public class DataCacheJson {
         }
         return pet;
     }
-
     public static void setPet(Pet pet) {
         checkLoaded();
         petsHashMap.put(pet.getPetId()+"",pet);
         saveAllToFiles();
     }
 
+
+
     public static ArrayList<Owner> getOwners() {
         checkLoaded();
         return new ArrayList<>(ownersHashMap.values());
     }
+
 
     public static Owner getOwner(String ownerId) {
         checkLoaded();
@@ -74,12 +77,14 @@ public class DataCacheJson {
         }
         return owner;
     }
-
     public static void setOwner(Owner owner) {
         checkLoaded();
         ownersHashMap.put(owner.getOwnerId()+"",owner);
         saveAllToFiles();
     }
+
+
+
 
     private static void saveAllToFiles() {
         try {
